@@ -39,4 +39,17 @@ public class ConverterTest {
         assertEquals("234", converter.splitToHundreds("1234567").get(1));
         assertEquals("1", converter.splitToHundreds("1234567").get(2));
     }
+
+
+    @Test
+    public void testConvertHundreds(){
+
+        Converter converter = new Converter();
+        assertEquals("zero", converter.convertHundreds("0"));
+        assertEquals("ten", converter.convertHundreds("10"));
+        assertEquals("twenty five", converter.convertHundreds("25"));
+        assertEquals("one hundred", converter.convertHundreds("100"));
+        assertEquals("one hundred twenty five", converter.convertHundreds("125"));
+
+    }
 }
