@@ -1,5 +1,6 @@
 package com.genericmethod.numtotext;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -50,6 +51,12 @@ public class ConverterTest {
         assertEquals("twenty five", converter.convertHundreds("25"));
         assertEquals("one hundred", converter.convertHundreds("100"));
         assertEquals("one hundred twenty five", converter.convertHundreds("125"));
+        assertEquals(StringUtils.EMPTY, converter.convertHundreds("000"));
+        assertEquals("ten", converter.convertHundreds("010"));
+        assertEquals("two hundred fifty", converter.convertHundreds("250"));
+
+
+
 
     }
 }
