@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class Converter {
 
-    public String convert(BigInteger number){
+    public String convert(BigInteger number) {
         StringBuilder text = new StringBuilder();
         String numericString = StringUtils.reverse(number.toString());
         final ArrayList<String> hundredChunks = Lists.newArrayList(splitInHundreds(numericString));
@@ -35,8 +35,8 @@ public class Converter {
         int count = 0;
         for (String token : hundredChunks) {
             textList.add(convertHundreds(StringUtils.reverse(token)));
-            if (count < hundredChunks.size()-1 && !hundredChunks.get(count+1).equals("000")){
-                textList.add(Scale.getFromNumber(count+2));
+            if (count < hundredChunks.size() - 1 && !hundredChunks.get(count + 1).equals("000")) {
+                textList.add(Scale.getFromNumber(count + 2));
             }
             count++;
         }
@@ -49,43 +49,43 @@ public class Converter {
         boolean secondNumberIsZero = false;
         boolean thirdNumberIsZero = false;
 
-        if (Character.getNumericValue(StringUtils.reverse(token).charAt(0)) == 0 && token.length() == 1){
+        if (Character.getNumericValue(StringUtils.reverse(token).charAt(0)) == 0 && token.length() == 1) {
             return Ones.ZERO.getDescription();
         }
 
         if (token.equals("000")) return StringUtils.EMPTY;
 
-        if (token.length() > 1 && Character.getNumericValue(StringUtils.reverse(token).charAt(0)) == 0){
+        if (token.length() > 1 && Character.getNumericValue(StringUtils.reverse(token).charAt(0)) == 0) {
             firstNumberIsZero = true;
         }
 
-        if (token.length() > 1 && Character.getNumericValue(StringUtils.reverse(token).charAt(1)) == 0){
+        if (token.length() > 1 && Character.getNumericValue(StringUtils.reverse(token).charAt(1)) == 0) {
             secondNumberIsZero = true;
         }
 
-        if (token.length() > 2 && Character.getNumericValue(StringUtils.reverse(token).charAt(2)) == 0){
+        if (token.length() > 2 && Character.getNumericValue(StringUtils.reverse(token).charAt(2)) == 0) {
             thirdNumberIsZero = true;
         }
 
-        if (token.length() == 1){
-             return text.append(Ones.getFromNumber(new Integer(token))).toString();
+        if (token.length() == 1) {
+            return text.append(Ones.getFromNumber(new Integer(token))).toString();
         }
 
-        if(token.length() == 2) {
+        if (token.length() == 2) {
             return handleDoubleDigit(token, firstNumberIsZero);
         }
 
-        if(token.length() == 3) {
-             if(thirdNumberIsZero) {
+        if (token.length() == 3) {
+            if (thirdNumberIsZero) {
                 return handleDoubleDigit(token.substring(1), firstNumberIsZero);
-             }
-             return StringUtils.trim(text.append(Ones.getFromNumber(Character.getNumericValue(token.charAt(0))))
-                     .append(StringUtils.SPACE)
-                     .append(Scale.HUNDRED.getDescription())
-                     .append(secondNumberIsZero ? StringUtils.EMPTY : StringUtils.SPACE)
-                     .append(secondNumberIsZero ? StringUtils.EMPTY : Tens.getFromNumber(Character.getNumericValue(token.charAt(1))))
-                     .append(StringUtils.SPACE)
-                     .append(firstNumberIsZero ? StringUtils.EMPTY : Ones.getFromNumber(Character.getNumericValue(token.charAt(2)))).toString());
+            }
+            return StringUtils.trim(text.append(Ones.getFromNumber(Character.getNumericValue(token.charAt(0))))
+                    .append(StringUtils.SPACE)
+                    .append(Scale.HUNDRED.getDescription())
+                    .append(secondNumberIsZero ? StringUtils.EMPTY : StringUtils.SPACE)
+                    .append(secondNumberIsZero ? StringUtils.EMPTY : Tens.getFromNumber(Character.getNumericValue(token.charAt(1))))
+                    .append(StringUtils.SPACE)
+                    .append(firstNumberIsZero ? StringUtils.EMPTY : Ones.getFromNumber(Character.getNumericValue(token.charAt(2)))).toString());
 
         }
 
@@ -107,35 +107,7 @@ public class Converter {
     }
 
 
-    public Iterable<String> splitInHundreds(String numericString){
+    public Iterable<String> splitInHundreds(String numericString) {
         return Splitter.fixedLength(3).split(numericString);
     }
-
-    public ArrayList splitToHundreds(String numericString){
-
-        int i;
-        int chunkSize = 3;
-        int numberOfChunks = numericString.length() / chunkSize;
-        if(numericString.length() % chunkSize != 0) numberOfChunks++;
-        ArrayList<String> listOfHundreds = new ArrayList<String>();
-
-        if (numericString.length() <= chunkSize) {
-            listOfHundreds.add(numericString);
-            return listOfHundreds;
-        }
-
-        for (i = 1; i <= numberOfChunks; i++) {
-            int start = (i-1) * chunkSize;
-            int end = (chunkSize * i);
-            if(i == numberOfChunks) {
-                listOfHundreds.add(StringUtils.reverse(StringUtils.reverse(numericString).substring(start, numericString.length())));
-            } else {
-                listOfHundreds.add(StringUtils.reverse(StringUtils.reverse(numericString).substring(start, end)));
-            }
-        }
-
-
-        return listOfHundreds;
-    }
-
 }
