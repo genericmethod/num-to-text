@@ -101,9 +101,9 @@ public class ConverterTest {
 
     }
 
-
+    @Test
     public void testLargeNumbers() throws InterruptedException {
-        BigInteger number = BigInteger.valueOf(10).pow(51).add(BigInteger.valueOf(1888726)).add(BigInteger.valueOf(10).pow(48));
+        BigInteger number = BigInteger.valueOf(10).pow(51).add(BigInteger.valueOf(1888726)).add(BigInteger.valueOf(2).pow(47));
         System.out.print(number+" -> " + converter.convert(number)+"\r\n");
 
     }

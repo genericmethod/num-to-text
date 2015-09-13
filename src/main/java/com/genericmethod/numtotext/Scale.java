@@ -16,7 +16,16 @@ public enum Scale {
     QUADRILLION (6,"quadrillion"),
     QUINTILLION (7,"quintillion"),
     SEXTILLION (8,"sextillion"),
-    SEPTILLION (9,"septillion");
+    SEPTILLION (9,"septillion"),
+    OCTILLION (10,"octillion"),
+    NONILLION (11,"nonillion"),
+    DECILLION(12,"decillion"),
+    UNDECILLION (13,"undecillion"),
+    DUODECILLION (14,"duodecillion"),
+    TREDICILLION (15,"tredecillion"),
+    QUATTORDECILLION (16,"quattuordecillion"),
+    QUINQUADECILLION (17,"quinquadecillion"),
+    SEDECILLION (18,"sedecillion");
 
     private final int number;
     private final String description;
