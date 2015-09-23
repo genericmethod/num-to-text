@@ -1,4 +1,4 @@
-package com.genericmethod.numtotext;
+package com.genericmethod.numtotext.api;
 
 import java.util.HashMap;
 import java.util.Map;

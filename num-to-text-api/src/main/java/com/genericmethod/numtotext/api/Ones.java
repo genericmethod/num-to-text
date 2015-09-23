@@ -1,4 +1,4 @@
-package com.genericmethod.numtotext;
+package com.genericmethod.numtotext.api;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +27,7 @@ public enum Ones {
     SIXTEEN(16,"sixteen") ,
     SEVENTEEN(17,"seventeen") ,
     EIGHTEEN(18,"eighteen") ,
-    NINTEEN(19,"nineteen");
+    NINETEEN(19,"nineteen");
 
     private final int number;
     private final String description;

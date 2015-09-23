@@ -5,13 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.genericmethod</groupId>
-    <artifactId>num-to-text</artifactId>
+    <artifactId>num-to-text-api</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>num-to-text-api</module>
-        <module>num-to-text-rest</module>
-    </modules>
 
     <repositories>
         <repository>
